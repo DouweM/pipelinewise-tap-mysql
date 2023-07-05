@@ -175,7 +175,7 @@ def discover_catalog(mysql_conn: MySQLConnection, dbs: str = None, tables: Optio
                        column_key
                     FROM information_schema.columns
                     {table_schema_clause}{tables_clause}
-                    ORDER BY table_schema, table_name
+                    ORDER BY table_schema, table_name, ordinal_position
             """)
 
             columns = []
