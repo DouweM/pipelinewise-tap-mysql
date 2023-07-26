@@ -109,6 +109,11 @@ def row_to_singer_record(catalog_entry, version, row, columns, time_extracted):
                 timedelta_from_epoch = epoch + elem
                 row_to_persist += (timedelta_from_epoch.isoformat() + '+00:00',)
 
+        elif 'string' in property_type and property_format == 'date-time' and elem == '0000-00-00 00:00:00':
+            row_to_persist += (None,)
+        elif 'string' in property_type and property_format == 'date' and elem == '0000-00-00':
+            row_to_persist += (None,)
+        
         elif 'boolean' in property_type or property_type == 'boolean':
             if elem is None:
                 boolean_representation = None
