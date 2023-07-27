@@ -4,6 +4,7 @@ import copy
 import datetime
 import singer
 import time
+import re
 
 from singer import metadata, utils, metrics
 
